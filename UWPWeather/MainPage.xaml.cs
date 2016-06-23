@@ -32,8 +32,11 @@ namespace UWPWeather
         {
             var position = await LocationManager.GetPosition();
 
+            //RootObject myWeather = await OpenWeatherMapProxy
+            //    .GetWeather(position.Coordinate.Latitude, position.Coordinate.Longitude);
+
             RootObject myWeather = await OpenWeatherMapProxy
-                .GetWeather(position.Coordinate.Latitude, position.Coordinate.Longitude);
+                .GetWeather();
 
             string icon = String.Format("ms-appx:///Assets/Weather/{0}.png", myWeather.weather[0].icon);
             WeatherResultIcon.Source = new BitmapImage(new Uri(icon, UriKind.Absolute));

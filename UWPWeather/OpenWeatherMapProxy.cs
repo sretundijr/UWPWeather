@@ -17,7 +17,9 @@ namespace UWPWeather
         {
             var http = new HttpClient();
 
-            var response = await http.GetAsync("");
+            var url = String
+                .Format("http://api.openweathermap.org/data/2.5/weather?lat=39.8680&lon=104.9719&units=imperial&APPID={0}", WeatherApiKey);
+            var response = await http.GetAsync(url);
 
             var result = await response.Content.ReadAsStringAsync();
             var serializer = new DataContractJsonSerializer(typeof(RootObject));
